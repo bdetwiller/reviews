@@ -75,7 +75,8 @@ class Chef
 			JOIN chef_tenure AS subject_t
 			ON coworker_t.restaurant_id = subject_t.restaurant_id
 			WHERE coworker_t.chef_id != subject_t.chef_id
-			AND coworker_t.start_date < subject_t.end_date AND subject_t.start_date < coworker_t.end_date
+			AND coworker_t.start_date < subject_t.end_date 
+			AND subject_t.start_date < coworker_t.end_date
 			AND subject_t.chef_id = ?
 		SQL
 
