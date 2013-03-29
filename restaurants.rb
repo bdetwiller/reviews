@@ -53,6 +53,33 @@ class Restaurant
 		restaurants.map { |attributes| Restaurant.new(attributes)}
 	end
 
+	def self.top_restaurants(num)                 
+		query = <<-SQL
+			SELECT restaurants.*, AVG(score)
+			FROM restaurants JOIN reviews 
+			ON restaurants.id = reviews.restaurant_id
+			GROUP BY restaurants.id
+			ORDER BY AVG(score) DESC
+			LIMIT ?
+		SQL
+
+		restaurants = RestaurantDatabase.instance.execute(query, num)
+		restaurants.map { |attributes| Restaurant.new(attributes)}
+	end
+
+	def self.highly_reviewed_restaurants(min_review)
+		query = <<-SQL
+			SELECT restaurants.*
+			FROM restaurants JOIN reviews 
+			ON restaurants.id = reviews.restaurant_id
+			GROUP BY reviews.restaurant_id 
+			HAVING COUNT(*) >= ?
+		SQL
+
+		restaurants = RestaurantDatabase.instance.execute(query, min_review)
+		restaurants.map { |attributes| Restaurant.new(attributes)}
+	end
+
 	def reviews
 		query = <<-SQL
 			SELECT *
@@ -73,5 +100,6 @@ class Restaurant
 
 		RestaurantDatabase.instance.execute(query, self.id)[0]['avg_score']
 	end
+
 
 end

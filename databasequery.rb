@@ -16,6 +16,7 @@ class RestaurantDatabase < SQLite3::Database
   end
 end
 
+p Restaurant.highly_reviewed_restaurants(1)
 #p Chef.find_by_id(3).co_workers
 #p Tenure.find_by_chef(1)
 #p Chef.find_by_id(1).reviews

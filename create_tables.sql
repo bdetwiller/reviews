@@ -51,7 +51,7 @@ VALUES ('i_love_eating'), ('Eric2040'), ('SFliving02'), ('Zagat');
 
 INSERT INTO reviews ('critic_id', 'restaurant_id', 'text_review', 'score', 'review_date')
 VALUES (1, 4, 'This place is ok but the chef is awesome', 3, '2012-12-15'),
-(4, 2, 'Neapolitan pizzas are “so in vogue” and this “swanky” SoMa Italian stands out', 4, '2013-01-15'),
-(2, 4, 'Best burritos in town, hands down', 5, '2012-04-04');
+(4, 2, 'Neapolitan pizzas are “so in vogue” and this “swanky” SoMa Italian stands out', 2, '2013-01-15'),
+(2, 4, 'Best burritos in town, hands down', 4, '2012-04-04');
 
 

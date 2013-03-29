@@ -81,7 +81,7 @@ class Chef
 		SQL
 
 		chefs = RestaurantDatabase.instance.execute(query, self.id)
-		chefs.map { |attributes| puts attributes}
+		chefs.map { |attributes| Chef.new(attributes)}
 	end
 
 end
